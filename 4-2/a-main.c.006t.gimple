@@ -1,0 +1,22 @@
+void platform_init ()
+{
+  printf ("x86 platform init");
+}
+
+
+int main ()
+{
+  int D.4667;
+
+  {
+    platform_init ();
+    add (2, 3);
+    sub (5, 4);
+    D.4667 = 0;
+    return D.4667;
+  }
+  D.4667 = 0;
+  return D.4667;
+}
+
+
