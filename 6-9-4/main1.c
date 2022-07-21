@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-void __f(void)
+#define A(x) a##x
+
+int main(void)
 {
-	printf("__f()\n)");
+	int A(1) = 2;
+	int A() = 3;
+	printf("%d %d\n", a1, a);
+	return 0;
 }
-void f() __attribute__((weak, alias("__f")));
-
-
-
-
