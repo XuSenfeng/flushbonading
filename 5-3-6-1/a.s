@@ -61,7 +61,7 @@ Disassembly of section .text:
     1092:	54                   	push   %rsp
     1093:	45 31 c0             	xor    %r8d,%r8d
     1096:	31 c9                	xor    %ecx,%ecx
-    1098:	48 8d 3d 41 01 00 00 	lea    0x141(%rip),%rdi        # 11e0 <main>
+    1098:	48 8d 3d 25 01 00 00 	lea    0x125(%rip),%rdi        # 11c4 <main>
     109f:	ff 15 33 2f 00 00    	call   *0x2f33(%rip)        # 3fd8 <__libc_start_main@GLIBC_2.34>
     10a5:	f4                   	hlt    
     10a6:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
@@ -142,38 +142,34 @@ Disassembly of section .text:
     119b:	00 00 
     119d:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
     11a1:	31 c0                	xor    %eax,%eax
-    11a3:	c7 45 e0 01 00 00 00 	movl   $0x1,-0x20(%rbp)
-    11aa:	c7 45 e4 02 00 00 00 	movl   $0x2,-0x1c(%rbp)
-    11b1:	c7 45 e8 03 00 00 00 	movl   $0x3,-0x18(%rbp)
-    11b8:	c7 45 ec 04 00 00 00 	movl   $0x4,-0x14(%rbp)
-    11bf:	48 8d 05 a3 ff ff ff 	lea    -0x5d(%rip),%rax        # 1169 <shellcode>
-    11c6:	89 45 04             	mov    %eax,0x4(%rbp)
-    11c9:	90                   	nop
-    11ca:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
-    11ce:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
-    11d5:	00 00 
-    11d7:	74 05                	je     11de <f+0x56>
-    11d9:	e8 82 fe ff ff       	call   1060 <__stack_chk_fail@plt>
-    11de:	c9                   	leave  
-    11df:	c3                   	ret    
+    11a3:	48 8d 05 bf ff ff ff 	lea    -0x41(%rip),%rax        # 1169 <shellcode>
+    11aa:	89 45 00             	mov    %eax,0x0(%rbp)
+    11ad:	90                   	nop
+    11ae:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    11b2:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    11b9:	00 00 
+    11bb:	74 05                	je     11c2 <f+0x3a>
+    11bd:	e8 9e fe ff ff       	call   1060 <__stack_chk_fail@plt>
+    11c2:	c9                   	leave  
+    11c3:	c3                   	ret    
 
-00000000000011e0 <main>:
-    11e0:	f3 0f 1e fa          	endbr64 
-    11e4:	55                   	push   %rbp
-    11e5:	48 89 e5             	mov    %rsp,%rbp
-    11e8:	e8 9b ff ff ff       	call   1188 <f>
-    11ed:	48 8d 05 22 0e 00 00 	lea    0xe22(%rip),%rax        # 2016 <_IO_stdin_used+0x16>
-    11f4:	48 89 c7             	mov    %rax,%rdi
-    11f7:	b8 00 00 00 00       	mov    $0x0,%eax
-    11fc:	e8 6f fe ff ff       	call   1070 <printf@plt>
-    1201:	b8 00 00 00 00       	mov    $0x0,%eax
-    1206:	5d                   	pop    %rbp
-    1207:	c3                   	ret    
+00000000000011c4 <main>:
+    11c4:	f3 0f 1e fa          	endbr64 
+    11c8:	55                   	push   %rbp
+    11c9:	48 89 e5             	mov    %rsp,%rbp
+    11cc:	e8 b7 ff ff ff       	call   1188 <f>
+    11d1:	48 8d 05 3e 0e 00 00 	lea    0xe3e(%rip),%rax        # 2016 <_IO_stdin_used+0x16>
+    11d8:	48 89 c7             	mov    %rax,%rdi
+    11db:	b8 00 00 00 00       	mov    $0x0,%eax
+    11e0:	e8 8b fe ff ff       	call   1070 <printf@plt>
+    11e5:	b8 00 00 00 00       	mov    $0x0,%eax
+    11ea:	5d                   	pop    %rbp
+    11eb:	c3                   	ret    
 
 Disassembly of section .fini:
 
-0000000000001208 <_fini>:
-    1208:	f3 0f 1e fa          	endbr64 
-    120c:	48 83 ec 08          	sub    $0x8,%rsp
-    1210:	48 83 c4 08          	add    $0x8,%rsp
-    1214:	c3                   	ret    
+00000000000011ec <_fini>:
+    11ec:	f3 0f 1e fa          	endbr64 
+    11f0:	48 83 ec 08          	sub    $0x8,%rsp
+    11f4:	48 83 c4 08          	add    $0x8,%rsp
+    11f8:	c3                   	ret    
